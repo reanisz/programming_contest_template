@@ -1,0 +1,2 @@
+# programming_contest_template
+競技プログラミング用テンプレートです。
