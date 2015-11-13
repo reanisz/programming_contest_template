@@ -179,3 +179,29 @@ T lcm(const T& a, const T& b){
     return a*b/__gcd(a,b);
 }
 
+//===binary_search
+
+template<class T>
+maybe<T> lower_bound_if(const T& begin, const T& end, const std::function<bool(const T&)>& func){
+    T low = begin;
+    T high = end;
+    while(1){
+        T mid = low + (high - low) / 2;
+//      cout << "(" << low << "," << high << ") -> " << mid <<endl;
+        if(low == high){
+            return low;
+        }else if(high - low == 1){
+            if(func(low)){
+                return low;
+            }else{
+                return high;
+            }
+        }
+        bool f = func(mid);
+        if(f){
+            high = mid;
+        }else{
+            low = mid;
+        }
+    }
+}
